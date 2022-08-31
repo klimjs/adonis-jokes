@@ -1,0 +1,31 @@
+@layout('layouts/master')
+
+@section('main')
+  <form
+    up-submit
+    up-target="[layout-main], [layout-sidebar]"
+    up-fail-target="[layout-main]"
+    action="{{ route('JokesController.store') }}"
+    method="post"
+  >
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+      @if(flashMessages.has('errors.name'))
+        <p>{{ flashMessages.get('errors.name') }}</p>
+      @end
+    </div>
+
+    <div>
+      <label for="content">Content</label>
+      <textarea name="content" id="content"></textarea>
+      @if(flashMessages.has('errors.content'))
+        <p>{{ flashMessages.get('errors.content') }}</p>
+      @end
+    </div>
+
+    <div>
+      <button type="submit">Add Joke</button>
+    </div>
+  </form>
+@end

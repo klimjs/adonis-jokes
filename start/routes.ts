@@ -23,3 +23,8 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+Route.get('jokes', 'JokesController.index')
+Route.get('jokes/create', 'JokesController.create')
+Route.post('jokes', 'JokesController.store')
+Route.get('jokes/:id', 'JokesController.show')
